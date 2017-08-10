@@ -13,16 +13,14 @@ env:
     - SAUCE_USERNAME=htmlbars-ci
     - SAUCE_ACCESS_KEY=71947947-f373-4e9c-9166-23038df7ddf2
   matrix:
-    - TEST_NODE=1 TEST_BROWSERS=1
+    - TEST_SUITE=browser
+    - TEST_SUITE=node
 matrix:
   fast_finish: true
-before_script:
-  - yarn run sauce:connect
 script:
   - yarn run problems
+  - yarn run eslint
   - yarn run test:ci
   - yarn run build
-  - yarn run eslint
 after_script:
   - sleep 10
-  - yarn run sauce:disconnect

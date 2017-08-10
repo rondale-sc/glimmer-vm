@@ -6074,6 +6074,10 @@ rsvp@^3.5.0:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-3.6.2.tgz#2e96491599a96cde1b515d5674a8f7a91452926a"
 
+rsvp@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.0.1.tgz#589fb1004cf5ea3c0c1ace5c655546906559ce11"
+
 rsvp@~3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-3.2.1.tgz#07cb4a5df25add9e826ebc67dcc9fd89db27d84a"
