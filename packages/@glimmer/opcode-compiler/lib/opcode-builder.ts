@@ -607,6 +607,10 @@ export abstract class OpcodeBuilder<Locator> extends SimpleOpcodeBuilder {
     this.push(Op.PrimitiveReference);
   }
 
+  blockReference() {
+    this.push(Op.BlockReference);
+  }
+
   helper(helper: Locator, params: Option<WireFormat.Core.Params>, hash: Option<WireFormat.Core.Hash>) {
     this.pushFrame();
     this.compileArgs(params, hash, null, true);
@@ -912,6 +916,7 @@ export abstract class OpcodeBuilder<Locator> extends SimpleOpcodeBuilder {
 
     this.getComponentSelf(Register.s0);
     bindings.push({ symbol: 0, isBlock: false });
+    debugger
 
     for (let i = 0; i < symbols.length; i++) {
       let symbol = symbols[i];
@@ -941,10 +946,19 @@ export abstract class OpcodeBuilder<Locator> extends SimpleOpcodeBuilder {
           break;
 
         case '@':
-          // if (symbol === '@main' && block) {
-          //   this.pushYieldableBlock(block);
-          //   this.wrapBlock();
-          //   bindings.push({ symbol: i + 1, isBlock: false });
+          if (symbol === '@main' && block) {
+            this.pushYieldableBlock(block);
+            this.blockReference();
+            bindings.push({ symbol: i + 1, isBlock: false });
+            continue;
+          }
+          if (symbol === '@else' && inverse) {
+            this.pushYieldableBlock(inverse);
+            this.blockReference();
+            bindings.push({ symbol: i + 1, isBlock: false });
+            continue;
+          }
+          //
           //   continue;
           //   // make a reference to the block
           // }

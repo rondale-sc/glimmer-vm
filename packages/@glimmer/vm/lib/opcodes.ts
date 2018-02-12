@@ -179,6 +179,8 @@ export const enum Op {
    */
   PrimitiveReference,
 
+  BlockReference,
+
   /**
    * Operation: Duplicate and push item from an offset in the stack.
    * Format:

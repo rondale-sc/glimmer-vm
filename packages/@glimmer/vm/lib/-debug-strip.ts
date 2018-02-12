@@ -524,6 +524,11 @@ OPCODE_METADATA(Op.PrimitiveReference, {
   name: 'PrimitiveReference'
 });
 
+OPCODE_METADATA(Op.BlockReference, {
+  name: 'BlockReference',
+  stackChange: -2
+});
+
 OPCODE_METADATA(Op.Dup, {
   name: 'Dup',
   ops: [Register('register'), I32('offset')],
